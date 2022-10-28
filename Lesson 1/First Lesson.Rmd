@@ -1,0 +1,161 @@
+---
+title: "1st Lesson"
+author: "Haozhi"
+date: "2022-10-27"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Data Scientist's Tool Box
+
+#### Using data/fact to answer questions
+
+#### Bigdata:
+
+Increasing **Volume** + Astonishing **Velocity** + Tremendous
+**Variety** + Messy and **Unstructured**
+
+#### Skills:
+
+substantive expertise + Hacking(programming) skills + Math/statistics
+knowledge
+
+Data need to be Collected, examined and considered to help decision
+making\
+
+Data is a set of values of qualitative and quantitative variables\
+\* Color is a quantitative variable (measured on ordered, continuous
+scales)\
+\* The question (SMART) you are trying to answer is the most important
+thing\
+
+Error message is important for beginners (most time error is command
+typos)\
+
+Be specific when you asking for help.
+
+#### Installation:
+
+\* [Basic package](https://cran.r-project.org)\
+\* [RStudio
+download](https://www.rstudio.com/products/rstudio/download/)\
+\* [RStudio Cloud](https://rstudio.cloud/)
+
+#### Packages:
+
+a collection of functions and data\
+\* [RDocuments](https://www.rdocumentation.org/) with the theme in mind\
+\* install.packages() and library() in console panel\
+\* Update packages frequently in packages panel\
+\* sessionInfo() to check the R version, operating system, and loaded
+packages\
+\* Detach("package:ggplot2", unload=TRUE) to uninstall or packages panel
+
+#### Version control:
+
+\* Git: Version control system, snapshot of the file\
+\* All changes saved and shared to Repository, AKA Repo\
+\* Stage the file and Commit the change of the file\
+\* Push the commit to the online shared repository  \* Pull is to
+download a local copy to edit  \* Merge the branch; Conflict of the
+branch\
+\* [GitDownload](https://git-scm.com/download) to link Git with RStudio\
+\* `gitconfig --global user.name "USERNAME"`\
+`git config --global user.email EMAIL`\
+To associate the name/email with each commits\
+`git config --list` to check the information\
+`exit`\
+
+#### Link Github and RStudio
+
+RStudio -\> Tools -\> Global Options -\> Git/SVN -\> Browse Git
+Executable directory -\> Create SSH RSA key -\> Close -\> View Public
+Key -\> Copy text -\> Go to Github -\> Profile -\> Settings -\> SSH and
+GPG key -\> New SSH Key -\> Paste and Confirm\
+
+#### RStudio operation:
+
+Git in Environment Panel -\> Stage check of the change -\> small Commit
+button -\> Commit message -\> Commit in the new window -\> Push -\>
+Check on your Github!\
+
+#### Add existing project to Github for version control
+
+Got confused so quickly, [markdown and do the rest
+first](https://www.coursera.org/learn/data-scientists-tools/lecture/wbfrX/projects-under-version-control).\
+
+#### R Markdown
+
+a file format for making dynamic documents with R\
+\* --- YAML section (metadata) ---\
+\* a code chunk is `{r descriptive text}, end with`; will display plain
+text if the back tick number is wrong\
+\* \### for headers, more makes it smaller\
+\* `in line code`\
+\* `*` for bullet points (whitespace afterwards)\
+\* `[embedded links](address of your content)`\
+\* Need to embed images `![embedded images](address of your content)`\
+\* `ggasve(“name”)`\
+\* Can not export as image file\
+\* [Cheat
+sheat](https://github.com/zhanghaozhi/Learning-log/tree/main/R%20Cheat%20Sheet)
+
+#### Types of Data Science questions
+
+1.  Descriptive: describe or summarize a set of data, like censuses\
+2.  Exploratory: Examine the data and find connections and relationship,
+    but **Correlation does not imply Causation**\
+3.  Inferential: use small samples(information) to say something about
+    the population\
+4.  Predictive: use current or historical data to make predictions about future\
+5.  Causal: see what happens to one variable when manipulate another variable, (randomize control... etc.)\
+6.  Mechanistic: Understand the exact changes in variables that lead to exact changes in other variables \
+
+
+#### Experimental Design
+
+Ask -> Prepare -> Process -> Analyze -> Share -> Act\
+
+Formulate your question (in advanced of any data collection) -> Design your experiment (dependent variable vs. independent variable, Confounded vs. *Randomized*, blinding + control, less vs. more replicates) -> Identify problems and sources of error -> Collect th data\
+
+p-hacking values\
+[definition](https://en.wikipedia.org/wiki/Data_dredging), [video](https://www.youtube.com/watch?v=UsU-O2Z1rAs), is important in statistic.\
+[H0 null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis): no observed difference in distribuition - all samples have same possibility
+Smaller the p value, the greater the evidence against the null hypothesis (distribution shifted more toward 0 value - see the result by chance).\
+p ~ 0.05, strong evidence against H0. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
