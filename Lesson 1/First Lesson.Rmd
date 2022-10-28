@@ -128,7 +128,7 @@ p-hacking values\
 [definition](https://en.wikipedia.org/wiki/Data_dredging), [video](https://www.youtube.com/watch?v=UsU-O2Z1rAs), is important in statistic.\
 [H0 null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis): no observed difference in distribuition - all samples have same possibility
 Smaller the p value, the greater the evidence against the null hypothesis (distribution shifted more toward 0 value - see the result by chance).\
-p ~ 0.05, strong evidence against H0. 
+p ~ 0.05 (5% chance of coincidence), strong evidence against H0. 
 
 
 
