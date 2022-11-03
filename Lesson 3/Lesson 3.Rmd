@@ -1,0 +1,66 @@
+---
+title: "Lesson 3"
+author: "Haozhi"
+date: "2022-11-03"
+output: html_document
+---
+# Loop functions
+Row is observation, column is variabls.
+
+### something new
+* `range(..., na.rm = FALSE)` returns the minimum and maximum of its first argument, which should be a numeric vector.\
+* `unique(x, incomparables = FALSE, ...)` returns a vector, data frame or array like x but with duplicate elements/rows removed.\
+* To pass a newly defined function (anonymous functions) in another function, `{}` is not required if this newly-defined function takes only one argument. like `lapply(x, function(elem) elem[2])`, elem is just a dummy variable.\
+* `table(flags$landmass)` will return a summary table which sum each factors of landmass in the flags matrix.\
+
+
+
+
+### `lapply`
+
+```{r}
+lapply
+```
+
+* take s list as input, applies a function to each element (column) of the list, and return a list of the same length as the original\
+* l stand for list, and no parentheses for the function inside all loop functions.\
+
+### `sapply`
+```{r}
+sapply
+```
+
+* simplified version of `lapply`\
+* if the result is a list where every element is of length one, then sapply() returns a vector. If the result is a list where every element is a vector of the same length (> 1), sapply()returns a matrix. If sapply() can't figure things out, then it just returns a list, no different from what lapply() would give you.\
+
+### `vapply`
+```{r}
+vapply
+```
+* vapply() allows to specify the result format explicitly, If the result doesn't match the format you specify, vapply() will throw an error, causing the operation to stop.\
+* safer than sapply function, and perform faster than sapply for large datasets.\
+
+### `tapply`
+```{r}
+tapply
+```
+* split the data into groups based on the value of some variable (factors), then apply function to the members of each group.\
+* `tapply(flags$animate, flags$landmass, mean)` think about how this works!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

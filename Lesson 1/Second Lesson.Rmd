@@ -1,0 +1,240 @@
+---
+title: "Second_lesson"
+author: "Haozhi"
+date: "2022-10-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# First week\
+
+Some new knowledge:\
+* [Biostatistics](https://publichealth.jhu.edu/departments/biostatistics)\
+* [Simply Statistics](https://simplystatistics.org/)\
+* [R history](https://en.wikipedia.org/wiki/R_(programming_language))\
+ 
+
+### Useful packages\
+Leave empty for future reference\
+
+### **R is case sensitive!!!**
+
+### Working with R\
+Always check your Working directory: `getwd()`\
+* `getwd()`, `setwd()`, `dir()`, `ls()`, `list.files()`\
+* `args(function name)`\
+* `dir.create("name of dir")`, `file.create("name of file")`, `file.info("")`, `file.exists("")`, `file.rename("from, to")`, `file.copy("from, to")`, `file.path("")`\
+* example: `dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)`\
+
+
+### Ask for help wisely\
+* Consult with the help document first: `?function_name`, `?`:`` for operators\
+* what steps will reproduce the problem?\
+* What is the expected output?\
+* What do you see instead?\
+* What version of the product (R, Packages) are you using?\
+* What operating system?\
+* Additional information?\
+
+### R programming basics\
+* Equal is `==` not `=`! Both `<-` and `=` can be used as assignment operator, `<-` can be used anywhere, whereas `=` is only allowed at the top level or as one of the subexpression in a braced list of experssions.\
+* We type expressions in the R prompt.\
+* The grammar of the language determines whether an expression is complete or not.\
+* `#` character indicates anything to the right is ignored.\
+* The `:` operator is used to create integer sequences, like `print (1:20)`., you don't need `c()` when using `:`.\
+* `seq(1, 20, by = 0.5)` will do the same with different increments, or use `length = number` argument to get certain number of value\
+* `1:length(my_seq)` equals to `seq(along.with = my_seq)`/`seq_along(my_seq)` to create vector with same numbers of objects\
+* `rep(x, times = 1, length.out = NA, each = 1)`\
+* `%%` return the reminder\
+
+* Five basic objects:\
+  + Character, `" "` double quotes are used to distinguish character objects\
+  + Numeric: `L` for integer, e.g. `15L`; `Inf` represents infinity, e.g. `1/Inf` is 0; `NaN` is undefined number, means not a number or missing number, e.g. 0/0.\
+  + Integer\
+  + Complex\
+  + Logical (True/False/NA)\
+    + R represents TRUE as the number 1 and FALSE as the number 0\
+    + Default to count `TRUE` in the `sum()` function
+  + Most basic object is vector: only contain objects of the same class; but *list* is an exception can contains different classes\
+\
+
+* Attribute:
+  + name, dimnames (col, row)\
+  + Dimensions (e.g. Matrices, arrays)\
+  + Class\
+  + Length\
+  + Other user-defined attributes/metadata\
+  + `attribute()` to set or add attributes to object\
+\
+  
+* Vectors: only same class\
+  + `c()` function acting as concatenate to create vectors of objects\
+  + `vector()` function\
+  + When different objects are mixed, *coercion* occurs to make every elements in the vector of the same class, like `cbind()` the character vector with numeric matrix.\
+  + Functions can be explicitly coerced from one class to another using `as.#numeric, logical, character#()` functions.\
+  + `paste (..., sep = " ", collapse = NULL, recycle0 = FALSE)` to concatenate the elements inside the vector\
+  + `names(vect_name) <- c(" ")` to assign name to each elements\
+  \
+* Lists: Contains different classes\
+  + Sampling random numbers in a list: `sample(list_name, 100)`\
+  + use `identical()` to check if two lists or vectors or logic Boolean value are the indentical. `idnetical(xor, "xor")` will yield FALSE.\
+  \
+* Matrices:
+  + Matrices can only contain a single class of data, while data frames can consist of many different classes of data.\
+  + vectors with dimension attribute, `matrix(1:6, nrow = 2, ncol = 3)`, or `cbind()`/`rbind()` to combine *same class* vectors.\
+  + use `dim(vect_name) <- c(" ")` to assign dimension attributes to matix.\
+  + Fill the vector by column by default, unless specify using `byrow = TURE` argument.\
+  
+* Factors: used to represent categorical data, can be unordered or ordered\
+  + were treated specially by modelling functions like `lm()` and `glm()`
+  + created with `factor()`, and the levels can be set using `levels = ` argument to `factor()`\
+  
+* Missing values: NA OR NaN\
+  + NA is not a value, but rather a placeholder for an unknown quantity, `NA > 0` equals to `NA`\
+  + `is.na()` or `is.nan()` to test true/false, just return the logical value not the filter function\
+  + `x[!is.na(x)]` return all elements is not NA\
+  
+  
+  
+* Data Frames: is a list of every element have the same length, store the tabular data (different classes) has Column and Rows\
+  + `data.frame(foo = 1:4, bar = c(T, T, F, F))`\
+  + 
+  
+  \  
+* Names: to label each elements in a vector\
+
+
+
+
+### Read file to R
+* `read.table` - separator is whitespace, `read.csv` - seperator is comma for tabular, `readLines` for text file, `Source` for R code, `dget` for R code, `load` for reading saved workspaces, `unserialize`\
+* `comment.char = ""` to set the comments with the larger dataset if there is no comment\
+* use `colClasses = ""` argument to make `read.table()` run much faster if you know the classes of your column.\
+* Set `nrows = ` argument helps with the memory usage.\
+* Rough calculation of memory requirements:  "rows num * columns num * 8 (bytes/numeric) / 2^20 (bytes/MB)"\
+
+
+### Textual Formats\
+* `dump` and `dput` preserve the metadata (could be used to reconstruct the data), works better with version control program. editable, longer-lived and easier to recover the data.\
+* But downside is the format is not very space-efficient.\
+
+### Connections:
+* `file`, `gzfile` for gzip compressed file, `url`, `bzfile` for bzip2 compressed file\
+* `readLines()` in a text file or webpage beyond `read.table()` or `read.csv()`\
+
+### Subsetting\
+* R is not "zero-based indexing", first element of a vector is considered element 1.\
+* `[]` returns an object of the *same class* as original (one exception)\
+* `[[]]` to extract *elements* of a list or a data frame; can be used with computed indices\
+* `$` used to extract elements of a list or data frame by name\
+* number index or logical index\
+* to extract multiple elements in a list: `x[c(1, 3, 5)]`, or `x[c(-1, -2, -5)]`/`x[-c(2, 5)]` to drop certain elements\
+* Subsetting in matrices\
+* partial Matching using [[ and $\
+* Removing NA values: `bad <- is.na()` or `good <- complete.cases(x, y)`\
+
+### Vectorized operations
+* could be used with vector and matrix\
+* When given two vectors of the same length, R simply performs the specified arithmetic operation (`+`, `-`, `*`, etc.) element-by-element. If the vectors are of different lengths, R 'recycles' the shorter vector until it is the same length as the longer vector (with a warning if the shorter vector does not divide evenly into the length of the longer vector).\
+
+
+# Second week\
+\
+### Control structures - reference to the book please!
+* `if, else`: testing a condition\
+* `for`: execute a loop a fixed number of times\
+* `while`: execute a loop while a condition is true\
+* `repeat`: execute an infinite loop\
+* `break`: break the execution of a loop\
+* `next`: skip an iteration of a loop\
+* `return`: exit a function\
+\
+
+### Functions
+* *Everything that exists is an object. 2. Everything that happens is a function call.*\
+* Characterized by the name of the function followed by parentheses. \
+* Input to the function called arguments, you can also pass functions as arguments.\
+* Created your own functions: `function_name <- function(arg_1, arg_2,....){expressions }`\
+* you don't need to specify the return value because the last expression working as the return.\
+* When you explicitly designate argument values by name, the ordering of the arguments becomes unimportant.\
+* R can also partial match arguments. `arg` is `argument`.\
+* Use `args(fucntion_name)` to examine the arguments.\
+* Functions that are not named are appropriately known as anonymous functions. `evaluate <- function(func, dat){func(dat)}` + `evaluate(function(x){x[1]}, c(8, 4, 0))` returns 8.\
+* `...` in the function is the ellipsis, The ellipses can be used to pass on arguments to other functions that are used within the function you're writing. all arguments after an ellipses must have default values(can not be partially matched).\
+* Lazy evaluation: arguments only evaluated as needed\
+\
+
+### Scoping rules
+* Binding values to symbol: *first search the global environment*\
+* then search the namespaces of each packages on the search list, `search()`, means the sequence of packages matters\
+* lexical (static) scoping: the value of free variables(not defined) are searched from the environment in which the function was defined, then to the parent environment, then global, will throw an error if nothing was found.\
+* Versus *Dynamic Scoping*
+\
+
+### Logical operators
+* Returns TRUE or FALSE\
+* `<-` and `=` are not identical\
+* `==`, `<`, `>`, `<=`, `>=`\
+* AND operator: `&` evaluate across a vector and `&&` only evaluates the first member of a vector.\
+* OR operator: `|` is the vectorized version and `||` is the non-vectorized version.\
+* *All AND operators are evaluated before OR operators.*\
+* `isTRUE()` or `isFALSE()`\
+* `xor()` stands for exclusive OR, takes two arguments, If one argument evaluates to TRUE and one argument evaluates to FALSE, then this function will return TRUE, otherwise it will return FALSE. (ONLY TRUE when TURE + FALSE)\
+* `which()` function takes a logical vector as an argument and returns the indices of the vector that are TRUE.\
+* The `any()` function will return TRUE if one or more of the elements in the logical vector is TRUE. The `all()` function will return TRUE if every element in the logical vector is TRUE.\
+\
+
+
+### Date and time`
+* Since 1970-01-01, `Sys.Date()` to get the current date with Date class, `Sys.time()` to get the current time with POSIXct or POSIXlt class\
+* `unclass()` to get the exact number of days/seconds since 1970-01-01.\
+* Use `as.Date("1969-01-01")` to assign a date prior to 1970-01-01.\
+* `weekdays()`, `months()`, `quarters()`, `strptime()`\
+* `difftime()` to calculte the difference in times\
+\
+
+### Coding standards
+* Always use text editor/files\
+* Indent your code(at least 4 spaces)\
+* Limit the width of your code (80 columns?)\
+* limit the length of individual function, help for debugging and profiling.\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
