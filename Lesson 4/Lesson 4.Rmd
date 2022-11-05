@@ -1,0 +1,61 @@
+---
+title: "Lesson 4"
+author: "Haozhi"
+date: "2022-11-03"
+output: html_document
+---
+
+# Lesson 4
+
+### something new
+* New set of data Checklist:\ 
+* `class()` to check the class, \
+* `dim()` to get the dimension of the dataset, \
+* `object.size()` to get how much space the dataset is occupying in memory,\
+* `names()` to get the column name,\
+* `head()` and `tail()` to preview the data,\
+* `summary()` to understand how each variable is distribited and how much data is missing.\
+* `table(dataset$col_name)` to show more details of each factors/levels in a certain observation.\
+* `str()` combines many of other fuctions is a concise and readable format.
+
+
+### Simulation
+* For each probability distribution there are typically 4 functions available that start with:
+  + "**d**" for density\
+  + "**r**" for random number generation\
+  + "**p**" for cumulative distribution\
+  + "**q**" for quantile function (inverse cumulative distribution)\
+  
+* **Always Setting** random number seed with `set.seed()` ensures reproducibility of the sequence of random numbers.\
+
+* Draw random sample from a vector of objects:`sample(x, size, replace = FALSE, prob = NULL)`, x does not have to be numbers, replace = TRUE means that each number will be "replaced" after it is selected, so that the same number can show up more than once, prob is a vector of numbers representing the probability.\
+* `rbinom(n, size, prob)`.\
+*  Each probability distribution in R has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile"). \
+* `rnorm(n, mean = 0, sd = 1)`.\
+* `rpois(n, lambda)`\
+
+### R profiling
+* optimize the coade are running slow because profiling is better than guessing.\
+* use `system.time(fun())` or `system.time({long_experssion})` to get the elapsed time and user time.\
+* `Rrpof()` to call out profiler, `Rrpof(NULL)` to turn off, and use `summaryRprog(by.self/by.total)` to tabulates the output and calculate.\
+
+### Plotting 
+* `plot(x, y = NULL, type = "p",  xlim = NULL, ylim = NULL,
+     log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
+     ann = par("ann"), axes = TRUE, frame.plot = axes,
+     panel.first = NULL, panel.last = NULL, asp = NA,
+     xgap.axis = NA, ygap.axis = NA,
+     ...)`\
+* more plot options can be seen in `?par`, `?points`, `boxplot`, `hist()`.\
+* formula argument in boxplot or plot, is an expression with a tilde ("~") indicates the releationship between the input variables, like mpg ~ cyl to plot the relationship between cyl (number of cylinders) on the x-axis and mpg (miles per gallon) on the y-axis (inversed x and y).\
+
+
+
+
+
+
+
+
+
+
+

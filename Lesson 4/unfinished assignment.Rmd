@@ -1,0 +1,51 @@
+---
+title: "Lesson 4 assignment"
+author: "Haozhi"
+date: "2022-11-04"
+output: html_document
+---
+
+1. Plot the 30-day mortality rates for heart attack
+```{r}
+
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+#str(outcome)
+
+outcome[, 11] <- as.numeric(outcome[, 11])
+
+hist(outcome[,11])
+```
+
+
+2. Finding the best hospital in a state
+*read all data into one file
+all_data <- outcome[c(2, 7, 11, 17, 23)]
+*rename the all_data for better coding
+names(all_data) <- c("Hospital name", "state", "heart attack", "heart failure", "pneumonia")
+* clean up the NA value
+cleaned_data <- na.omit(all_data)
+
+
+```{r}
+best <- function(states, outcomes) {
+## Read outcome data
+    all_data <- outcome[c(2, 7, 11, 17, 23)]
+    names(all_data) <- c("Hospital name", "state", "heart attack", "heart failure", "pneumonia")
+    outcome_mode <- c("heart attack"=3, "heart failure"=4, "pneumonia"=5)
+    sorted <- all_data[, c(1, 2, outcome_mode[outcomes])]
+## Check that state and outcome are valid
+    if (state != cleaned_data$state ){
+      "invalid state"
+    } else if (outcome != c("heart attack", "heart failure", "pneumonia")){
+      "invalid outcome"
+    }
+## Return hospital name in that state with lowest 30-day death
+      else {
+      sorted_state<-sorted[which(sorted$state == "NY"), ]
+      cleaned_state<-na.omit((sorted_state))
+      Rank <- cleaned_data[order()]
+    }
+## rate
+}
+```
+
