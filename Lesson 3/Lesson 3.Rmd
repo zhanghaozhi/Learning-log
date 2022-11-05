@@ -12,42 +12,89 @@ Row is observation, column is variabls.
 * `unique(x, incomparables = FALSE, ...)` returns a vector, data frame or array like x but with duplicate elements/rows removed.\
 * To pass a newly defined function (anonymous functions) in another function, `{}` is not required if this newly-defined function takes only one argument. like `lapply(x, function(elem) elem[2])`, elem is just a dummy variable.\
 * `table(flags$landmass)` will return a summary table which sum each factors of landmass in the flags matrix.\
+* `rnorm(n, mean = 0, sd = 1)` normal distribution.\
+* `runif(n, mean = 0, sd = 1)` uniform distribution, or `runif(n, min = 0, max = 1)` to add the \
+* `str()` can be used to generate the structure of a function.\
+* `rep` is the replicate.
+* `gl(n, k, length = n * k, labels = seq_len(n), ordered = FALSE)` to generate factor by n levels and k replicates in each level.\
+* `with(data, expr, ...)` to call out the parent environment for expr evaluation. like 
+`tapply(mtcars$mpg, mtcars$cyl, mean)` can be simplified as `with(mtcars, tapply(mpg, cyl, mean))`
 
 
 
+
+### `apply`
+```{r}
+str(apply) #(X, MARGIN = (1 or 2), FUN, ...)
+```
+* evaluate the function over the margins (dimensions like row = 1 or column = 2) of an array.\
+* But `Colsum`, `Colmean`, `Rowsum`, `Rowmean` will normally do the same with much faster speed.\
+* will return a vector by default because `simplify = TRUE` argument.\
 
 ### `lapply`
-
 ```{r}
-lapply
+str(lapply) 
 ```
 
-* take s list as input, applies a function to each element (column) of the list, and return a list of the same length as the original\
+* easier than for or while loop when programming in a compact command line.\
+* take s list as input, applies a function to each element (column) of the list, and always return a list of the same length as the original\
 * l stand for list, and no parentheses for the function inside all loop functions.\
 
 ### `sapply`
 ```{r}
-sapply
+str(sapply)
 ```
 
 * simplified version of `lapply`\
 * if the result is a list where every element is of length one, then sapply() returns a vector. If the result is a list where every element is a vector of the same length (> 1), sapply()returns a matrix. If sapply() can't figure things out, then it just returns a list, no different from what lapply() would give you.\
 
+### `mplay`
+```{r}
+str(mplay)
+```
+* multivariate apply of sorts which applies a function in parallel over a set of arguments.\
+* easy to use when there is vector input, example:`mapply(rep, 1:4, 4:1)`, `mapply(mean, 1:5, 1:5)`
+
 ### `vapply`
 ```{r}
-vapply
+str(vapply)
 ```
 * vapply() allows to specify the result format explicitly, If the result doesn't match the format you specify, vapply() will throw an error, causing the operation to stop.\
 * safer than sapply function, and perform faster than sapply for large datasets.\
 
 ### `tapply`
 ```{r}
-tapply
+str(tapply) 
 ```
 * split the data into groups based on the value of some variable (factors), then apply function to the members of each group.\
-* `tapply(flags$animate, flags$landmass, mean)` think about how this works!
+* `tapply(flags$animate, flags$landmass, mean)` think about how this works!\
+
+### `split`
+```{r}
+str(split)
+```
+* takes a vector or other objects (x) and splits it into groups determined by a factor or list of factors (f), drop to remove empty values.\
+
+### Some examples
+* tapply(mtcars$mpg, mtcars$cyl, mean), with(mtcars, tapply(mpg, cyl, mean)), 
+sapply(split(mtcars$mpg, mtcars$cyl), mean) are the same.\
 
 
+### Debugging
+* `message`, `warning`, `error`, and only error is fatal.\
+* check list:\
+  + what was your input? how did you call the function?\
+  + what were you expecting? output, message, other results?\
+  + what did you get?\
+  + how does what you get differ from what you were expecting?\
+  + Were your expectations correct in the first place?\
+  + Can you reproduce the problem(exactly)?\
+* Tools:\
+  + `traceback()` to print out the function call stack after an error occurs.\
+  + `debug()`put a function for "debug" mode to step through the execution one line at a time.\
+  + `browser()`: suspends the execution.\
+  + `trace()` only works with the latest code to trace back where error occurred, and `recover()`.\
+  
 
 
 
